@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Gustavo</title>
+    <!-- Bootstrap CSS -->
+     <meta name="Description" content="Portifolio Cósmico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <style>
+        :root {
+            --cor-fundo: #0a0a16;
+            --cor-destaque: #1a1a2e;
+            --cor-primaria: #16213e;
+            --cor-secundaria: #0f3460;
+            --cor-texto: #e2e2e2;
+            --cor-dourada: #ffd700;
+            --cor-azul-claro: #4cc9f0;
+        }
+        .star {
+    position: fixed;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle 4s infinite ease-in-out;
+    z-index: 0;
+    pointer-events: none;
+}
+/* Animações de Scroll Reveal */
+.card-cosmic, .skill-item, .timeline-item {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+/* Efeito Glassmorphism Melhorado */
+.card-cosmic {
+    background: rgba(26, 26, 46, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(76, 201, 240, 0.3);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Animação das partículas */
+@keyframes particleFloat {
+    0% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0) translateY(-50px);
+        opacity: 0;
+    }
+}
+@keyframes particleFloat {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+/* Nebulosas Animadas */
+.nebula {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: nebulaFloat 25s infinite alternate ease-in-out;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.nebula-1 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, 
+        rgba(76, 201, 240, 0.15) 0%, 
+        rgba(76, 201, 240, 0.08) 30%, 
+        transparent 70%);
+    top: 15%;
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.nebula-2 {
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, 
+        rgba(255, 215, 0, 0.12) 0%, 
+        rgba(255, 215, 0, 0.06) 30%, 
+        transparent 70%);
+    bottom: 20%;
+    right: 10%;
+    animation-delay: 5s;
+}
+
+.nebula-3 {
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, 
+        rgba(156, 39, 176, 0.1) 0%, 
+        rgba(156, 39, 176, 0.05) 30%, 
+        transparent 70%);
+    top: 60%;
+    left: 15%;
+    animation-delay: 10s;
+}
+
+.nebula-4 {
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, 
+        rgba(76, 201, 240, 0.08) 0%, 
+        rgba(255, 215, 0, 0.04) 30%, 
+        transparent 70%);
+    top: 25%;
+    right: 20%;
+    animation-delay: 15s;
+}
+
+@keyframes nebulaFloat {
+    0% { 
+        transform: translate(0, 0) scale(1) rotate(0deg);
+    }
+    25% { 
+        transform: translate(30px, -20px) scale(1.1) rotate(5deg);
+    }
+    50% { 
+        transform: translate(-20px, 15px) scale(0.9) rotate(-3deg);
+    }
+    75% { 
+        transform: translate(15px, 25px) scale(1.05) rotate(2deg);
+    }
+    100% { 
+        transform: translate(-25px, -15px) scale(1) rotate(0deg);
+    }
+}
+
+/* Efeito de pulsação suave */
+@keyframes nebulaPulse {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.6; }
+}
+
+.nebula-1 { animation: nebulaFloat 30s infinite alternate ease-in-out, nebulaPulse 8s infinite ease-in-out; }
+.nebula-2 { animation: nebulaFloat 25s infinite alternate-reverse ease-in-out, nebulaPulse 10s infinite ease-in-out; }
+.nebula-3 { animation: nebulaFloat 35s infinite alternate ease-in-out, nebulaPulse 12s infinite ease-in-out; }
+.nebula-4 { animation: nebulaFloat 28s infinite alternate-reverse ease-in-out, nebulaPulse 9s infinite ease-in-out; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+        
+        .bg-cosmic {
+            background: linear-gradient(135deg, var(--cor-fundo) 0%, var(--cor-primaria) 50%, var(--cor-secundaria) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bg-cosmic::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 4px),
+                radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 3px),
+                radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 4px);
+            background-size: 550px 550px, 350px 350px, 250px 250px;
+            background-position: 0 0, 40px 60px, 130px 270px;
+            opacity: 0.3;
+        }
+        
+        .bg-stars {
+    background-color: var(--cor-fundo);
+}
+        .navbar {
+            background-color: rgba(10, 10, 22, 0.9) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        
+        .navbar-scrolled {
+            background-color: rgba(10, 10, 22, 0.95) !important;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-section {
+            padding: 180px 0 120px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cosmic-title {
+            font-weight: 800;
+            background: linear-gradient(to right, var(--cor-azul-claro), var(--cor-dourada));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 20px rgba(76, 201, 240, 0.3);
+        }
+        
+        .avatar-container {
+            position: relative;
+            display: inline-block;
+        }
+        /* CRIEI do zero - não substituí nada existente */
+        .shooting-star {
+    position: fixed;
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, white, white);
+    animation: shoot var(--shoot-duration) linear infinite;
+    animation-delay: var(--shoot-delay);
+    z-index: 1;
+}
+
+@keyframes shoot {
+    0% {
+        transform: translateX(0) translateY(0) rotate(var(--angle));
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(100vw) translateY(0) rotate(var(--angle));
+        opacity: 0;
+    }
+}
+
+#space-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+        .avatar {
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+            border: 3px solid var(--cor-azul-claro);
+            box-shadow: 
+                0 0 30px rgba(76, 201, 240, 0.5),
+                inset 0 0 30px rgba(10, 10, 22, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        avatar:hover {
+    transform: scale(1.05);
+    box-shadow:
+        0 0 40px rgba(76, 201, 240, 0.6),
+        0 0 80px rgba(255, 215, 0, 0.3),
+        inset 0 0 25px rgba(10, 10, 22, 0.8);
+    transition: all 0.6s ease-in-out;
+}
+        
+        .avatar::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+    background: linear-gradient(45deg, rgba(76, 201, 240, 0.2), rgba(255, 215, 0, 0.1));
+            z-index: 1;
+                filter: blur(6px);
+
+    animation: avatarGlowEnhanced 2.5s linear infinite;
+        }
+        
+        @keyframes avatarGlow {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            font-weight: 700;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--cor-azul-claro), var(--cor-dourada));
+            border-radius: 3px;
+        }
+        
+        .card-cosmic {
+            background: rgba(26, 26, 46, 0.7);
+            border: 1px solid rgba(76, 201, 240, 0.2);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            overflow: hidden;
+        }
+        
+        .card-cosmic:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(76, 201, 240, 0.2);
+            border-color: rgba(76, 201, 240, 0.4);
+        }
+        
+        .card-cosmic .card-header {
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+            border-bottom: 1px solid rgba(76, 201, 240, 0.3);
+            padding: 1.5rem;
+        }
+        
+        .skill-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .progress {
+            height: 10px;
+            border-radius: 5px;
+            background-color: rgba(10, 10, 22, 0.5);
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(to right, var(--cor-azul-claro), var(--cor-dourada));
+            border-radius: 5px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--cor-azul-claro), var(--cor-dourada));
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--cor-azul-claro);
+            border: 2px solid var(--cor-fundo);
+            box-shadow: 0 0 0 3px var(--cor-azul-claro);
+        }
+        
+        .btn-cosmic {
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+            border: none;
+            color: white;
+            font-weight: 600;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-cosmic::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-cosmic:hover {
+            background: linear-gradient(135deg, var(--cor-secundaria) 0%, var(--cor-azul-claro) 100%);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 0 15px rgba(76, 201, 240, 0.4);
+        }
+        
+        .btn-cosmic:hover::before {
+            left: 100%;
+        }
+        
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+            color: white;
+            margin-right: 15px;
+            transition: all 0.3s;
+            font-size: 1.2rem;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: linear-gradient(135deg, var(--cor-secundaria) 0%, var(--cor-azul-claro) 100%);
+            box-shadow: 0 5px 15px rgba(76, 201, 240, 0.4);
+        }
+        
+        footer {
+            padding: 3rem 0;
+            background: rgba(10, 10, 22, 0.9);
+            border-top: 1px solid rgba(76, 201, 240, 0.2);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 1000;
+            border: 1px solid rgba(76, 201, 240, 0.3);
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(135deg, var(--cor-secundaria) 0%, var(--cor-azul-claro) 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(76, 201, 240, 0.3);
+        }
+        
+        .form-control {
+            background-color: rgba(26, 26, 46, 0.7);
+            border: 1px solid rgba(76, 201, 240, 0.2);
+            color: var(--cor-texto);
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+        }
+        
+        .form-control:focus {
+            background-color: rgba(26, 26, 46, 0.9);
+            border-color: var(--cor-azul-claro);
+            color: var(--cor-texto);
+            box-shadow: 0 0 0 0.25rem rgba(76, 201, 240, 0.25);
+        }
+        
+        .form-label {
+            color: var(--cor-azul-claro);
+            font-weight: 500;
+        }
+        
+        .badge-cosmic {
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-secundaria) 100%);
+            color: white;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, -15px); }
+            100% { transform: translate(0, 0px); }
+        }
+        
+        .planet {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, var(--cor-azul-claro), var(--cor-primaria));
+            box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+        
+        .planet-1 {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            right: 10%;
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        .planet-2 {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 5%;
+            background: radial-gradient(circle at 30% 30%, var(--cor-dourada), var(--cor-secundaria));
+            animation: floating 4s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+        
+        .constellation {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            background-image: 
+                radial-gradient(2px 2px at 50px 50px, #eee, transparent),
+                radial-gradient(2px 2px at 80px 100px, #fff, transparent),
+                radial-gradient(1px 1px at 120px 60px, #ddd, transparent),
+                radial-gradient(1px 1px at 150px 150px, #fff, transparent),
+                radial-gradient(2px 2px at 180px 80px, #eee, transparent);
+            opacity: 0.5;
+            z-index: 1;
+        }
+        
+        .constellation-1 {
+            top: 15%;
+            left: 5%;
+        }
+        
+        .constellation-2 {
+            bottom: 10%;
+            right: 8%;
+            transform: rotate(45deg);
+        }
+
+        #sobre p{
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-stars">
+    <!-- Elementos cósmicos de fundo -->
+<div class="planet planet-1"></div>
+<div class="planet planet-2"></div>
+<div class="constellation constellation-1"></div>
+<div class="constellation constellation-2"></div>
+
+<!-- Nebulosas (ADICIONE ESTAS LINHAS) -->
+<div class="nebula nebula-1"></div>
+<div class="nebula nebula-2"></div>
+<div class="nebula nebula-3"></div>
+<div class="nebula nebula-4"></div>
+   
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold cosmic-title" href="#">Portfólio<span class="text-warning"> Gustavo</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="ic" href="#inicio">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobre">Sobre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#habilidades">Habilidades</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projetos">Projetos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center hero-content">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold mb-4 cosmic-title">Olá sou o <span class="text-warning">Gustavo</span></h1>
+                    <p class="lead mb-4" style="color: white;">Analista de Dados & Desenvolvedor Front-End</p>
+                    <p class="mb-5">Navego entre planilhas, bancos de dados e linhas de código para transformar processos em resultados.
+
+Entre o Excel e o Python, construo soluções que tornam a rotina mais inteligente e os números mais estratégicos.</p>
+                    <a href="#projetos" class="btn btn-cosmic btn-lg me-3">Explorar Projetos</a>
+                    <a href="#contato" class="btn btn-outline-light btn-lg">Contatar</a>
+                </div>
+                <div class="col-lg-6 text-center mt-5 mt-lg-0">
+                    <div class="avatar-container floating">
+                        <img class="avatar mx-auto d-flex align-items-center justify-content-center"   src="../Downloads/WhatsApp Image 2025-10-24 at 13.32.24.jpeg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="sobre" class="py-5">
+        <div class="container">
+            <h2 class="section-title ">Sobre o Explorador</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <p class="mb-4">Sou um explorador do universo digital, navegando pelas galáxias do código e do design.
+Atualmente, me especializo em Python e desenvolvimento Front-End com Bootstrap, unindo criatividade e lógica para construir experiências funcionais.</p>
+                    <p class="mb-4">Com uma base sólida em Excel avançado e em constante evolução no Power BI, transformo dados em insights e automações que tornam o dia a dia mais eficiente.</p>
+                    <p class="mb-4">Acredito que cada linha de código é uma estrela no firmamento digital — e juntas, elas formam constelações de soluções que simplificam o mundo real.</p>
+                    <a href="#" class="btn btn-cosmic">Baixar Currículo</a>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="h4 mb-4 cosmic-title">Linha do Tempo Cósmica</h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h5 class="cosmic-title">Analista de Dados</h5>
+                            <p class="mb-1 text-white fw-bold">Assistente Administrativo – X³ Bank (2025 – presente)</p>
+                            <p>Responsável pela análise de dados operacionais, criação de relatórios automatizados em Excel e desenvolvimento de dashboards em Power BI.
+Além disso, implemento rotinas em Python para o envio automático de relatórios diários aos responsáveis, otimizando o fluxo de comunicação e reduzindo tarefas manuais.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Habilidades -->
+    <section id="habilidades" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center">Habilidades Intergalácticas</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Python</span>
+                            <span>50%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Excel</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>Power BI</span>
+                            <span>30%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 30%"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>IA</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>BootStrap</span>
+                            <span>50%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 50%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-name">
+                            <span>JavaScript</span>
+                            <span>0%</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projetos -->
+    <section id="projetos" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center text-white">Missões Concluídas</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card card-cosmic h-100">
+                        <div class="card-header text-center">
+                            <i class="fas fa-rocket fa-3x mb-3 text-white"></i>
+                            <h5 class="card-title mb-0 text-white">Central de Dados – X³ Bank</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-white">Plataforma interna de relatórios e automações criada para otimizar o fluxo de informações entre áreas.</p>
+                            <p class="card-text text-white">🔘 Criação de relatórios automatizados em Excel avançado.</p>
+                            <p class="card-text text-white">🔘 Desenvolvimento de dashboards em Power BI para acompanhamento de resultados.</p>
+                            <p class="card-text text-white">🔘 Utilização de Python para envio diário de relatórios automáticos aos gestores, reduzindo o tempo operacional.</p><br>
+                            <div class="mb-3">
+                                <span class="badge-cosmic me-1 d-inline-block mb-1">Excel</span>
+                                <span class="badge-cosmic me-1 d-inline-block mb-1">Power BI</span>
+                                <span class="badge-cosmic d-inline-block mb-1">Python</span>
+                                <span class="badge-cosmic d-inline-block mb-1">Pandas</span>
+                            </div>
+                            <a href="#" class="btn btn-cosmic w-100 ">Explorar Missão</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card card-cosmic h-100 text-white">
+                        <div class="card-header text-center">
+                            <i class="fas fa-satellite fa-3x mb-3"></i>
+                            <h5 class="card-title mb-0 text-white">Portfólio Cósmico</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-white">Site pessoal criado para apresentar projetos, experiências e aprendizados na área de desenvolvimento.</p>
+                            <p class="card-text text-white">🔘 Estruturado com HTML, CSS e Bootstrap 5.</p>
+                            <p class="card-text text-white">🔘 Design responsivo e temático com animações e ícones espaciais.</p>
+                            <p class="card-text text-white">🔘 Desenvolvimento contínuo como laboratório de aprendizado Front-End
+</p>
+                            <div class="mb-3">
+                                <span class="badge-cosmic me-1 d-inline-block mb-1">HTML</span>
+                                <span class="badge-cosmic me-1 d-inline-block mb-1">CSS</span>
+                                <span class="badge-cosmic d-inline-block mb-1">Bootstrap</span>
+                                <span class="badge-cosmic d-inline-block mb-1">JavaScript</span>
+                            </div>
+                            <a href="#" class="btn btn-cosmic w-100 text-white">Explorar Missão</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card card-cosmic h-100 text-white">
+                        <div class="card-header text-center">
+                            <i class="fas fa-chart-bar fa-3x mb-3"></i>
+                            <h5 class="card-title mb-0 text-white">Painel Estelar</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text text-white">Dashboard interativo para visualização de dados cósmicos com gráficos dinâmicos e relatórios galácticos.</p>
+                            <div class="mb-3">
+                                <span class="badge-cosmic me-1 d-inline-block mb-1">Angular</span>
+                                <span class="badge-cosmic me-1 d-inline-block mb-1">D3.js</span>
+                                <span class="badge-cosmic d-inline-block mb-1">Python</span>
+                            </div>
+                            <a href="#" class="btn btn-cosmic w-100">Explorar Missão</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="py-5 text-white">
+        <div class="container">
+            <h2 class="section-title text-center"> Contate-me</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="nome" class="form-label" style="color: white;">Nome</label>
+                                <input type="text" class="form-control" id="nome" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="email" class="form-label" style="color: white;">E-mail</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="assunto" class="form-label" style="color: white;" >Assunto</label>
+                            <input type="text" class="form-control" id="assunto" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="mensagem" class="form-label" style="color: white;">Mensagem</label>
+                            <textarea class="form-control" id="mensagem" rows="5" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-cosmic btn-lg">Enviar Transmissão</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container py-4">
+            <div class="social-icons mb-3">
+                <a href="https://www.linkedin.com/in/gustavo-mello-92769b1bb/" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/gustavomello390" title="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="mb-0">&copy; 2023 Portfólio Gustavo. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botão Voltar ao Topo -->
+    <a href="#" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Bootstrap JS -->
+    
+    <script>
+        // CRIAR FUNDO ESPACIAL COMPLETO
+        // CRIAR FUNDO ESPACIAL COMPLETO
+function createSpaceBackground() {
+    const space = document.createElement('div');
+    space.id = 'space-background';
+    document.body.prepend(space);
+    
+    // Criar estrelas piscantes
+    function createStars() {
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${Math.random() * 100}%`;
+            star.style.top = `${Math.random() * 100}%`;
+            star.style.animationDelay = `${Math.random() * 5}s`;
+            space.appendChild(star);
+        }
+    }
+    
+    // Criar nebulosas
+    function createNebulas() {
+        const nebulaColors = [
+            'rgba(76, 201, 240, 0.15)',
+            'rgba(255, 215, 0, 0.12)', 
+            'rgba(156, 39, 176, 0.1)',
+            'rgba(76, 201, 240, 0.08)'
+        ];
+        
+        const positions = [
+            { top: '15%', left: '5%' },
+            { top: '20%', right: '10%' },
+            { top: '60%', left: '15%' },
+            { top: '25%', right: '20%' }
+        ];
+        
+        const sizes = [500, 400, 350, 300];
+        
+        for (let i = 0; i < 4; i++) {
+            const nebula = document.createElement('div');
+            nebula.className = `nebula nebula-${i + 1}`;
+            
+            // Configurar tamanho
+            nebula.style.width = `${sizes[i]}px`;
+            nebula.style.height = `${sizes[i]}px`;
+            
+            // Configurar posição
+            Object.keys(positions[i]).forEach(key => {
+                nebula.style[key] = positions[i][key];
+            });
+            
+            // Adicionar ao espaço
+            space.appendChild(nebula);
+        }
+    }
+    
+    // Criar estrelas cadentes (cometas)
+    for (let i = 0; i < 8; i++) {
+        const shootingStar = document.createElement('div');
+        shootingStar.classList.add('shooting-star');
+        
+        const angles = [0, 2, -2, 5, -5, 8, -8, 10, -10];
+        const angle = angles[Math.floor(Math.random() * angles.length)];
+        const duration = 5 + Math.random() * 10;
+        const delay = Math.random() * 20;
+        
+        shootingStar.style.left = `-100px`;
+        shootingStar.style.top = `${10 + Math.random() * 60}%`;
+        shootingStar.style.setProperty('--angle', `${angle}deg`);
+        shootingStar.style.setProperty('--shoot-duration', `${duration}s`);
+        shootingStar.style.setProperty('--shoot-delay', `${delay}s`);
+        
+        space.appendChild(shootingStar);
+    }
+    
+    // Chamar funções
+    createStars();
+    createNebulas();
+}
+    
+        // PARTÍCULAS QUE SEGUEM O MOUSE
+        function createParticles() {
+            document.addEventListener('mousemove', function(e) {
+                if (Math.random() > 0.97) { // 3% de chance - mais suave
+                    const particle = document.createElement('div');
+                    particle.style.cssText = `
+                        position: fixed;
+                        width: 3px;
+                        height: 3px;
+                        background: var(--cor-azul-claro);
+                        border-radius: 50%;
+                        pointer-events: none;
+                        z-index: 9999;
+                        left: ${e.clientX}px;
+                        top: ${e.clientY}px;
+                        animation: particleFloat 1.5s forwards;
+                    `;
+                    document.body.appendChild(particle);
+                    
+                    setTimeout(() => {
+                        if (particle.parentNode) {
+                            particle.parentNode.removeChild(particle);
+                        }
+                    }, 1500);
+                }
+            });
+        }
+    
+        // SCROLL REVEAL ANIMATION
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        entry.target.style.transition = 'all 0.8s ease';
+                    }
+                });
+            }, { threshold: 0.1 });
+    
+            // Observar elementos para animação
+            const elementsToAnimate = document.querySelectorAll('.card-cosmic, .skill-item, .timeline-item');
+            elementsToAnimate.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                observer.observe(el);
+            });
+        }
+    
+        // ANIMAR BARRAS DE HABILIDADE
+        function animateSkillBars() {
+            const skillObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const progressBar = entry.target.querySelector('.progress-bar');
+                        const width = progressBar.style.width;
+                        progressBar.style.width = '0%';
+                        progressBar.style.transition = 'none';
+                        
+                        setTimeout(() => {
+                            progressBar.style.transition = 'width 1.5s ease-in-out';
+                            progressBar.style.width = width;
+                        }, 300);
+                    }
+                });
+            });
+    
+            document.querySelectorAll('.skill-item').forEach(el => {
+                skillObserver.observe(el);
+            });
+        }
+    
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('navbar-scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('navbar-scrolled');
+            }
+            
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+        
+        // Smooth scrolling para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Iniciar efeitos quando a página carregar
+        window.addEventListener('load', function() {
+            createSpaceBackground(); // ← CRIA O FUNDO ESPACIAL
+            createParticles(); // ← PARTÍCULAS NO MOUSE
+            initScrollReveal(); // ← ANIMAÇÃO SCROLL
+            animateSkillBars(); // ← BARRAS ANIMADAS
+            
+            // Efeito de digitação no título
+            const cosmicTitle = document.querySelector('.cosmic-title');
+            const originalText = cosmicTitle.textContent;
+            cosmicTitle.textContent = '';
+            
+            let i = 0;
+            function typeWriter() {
+                if (i < originalText.length) {
+                    cosmicTitle.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
+                }
+            }
+            typeWriter();
+        });
+    </script> 
+</body>
+</html>
